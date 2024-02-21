@@ -86,10 +86,12 @@ def delete_employee(id: int):
     global employees  # Access the global variable employees
     employee = get_employee(id)  # Retrieve the employee to delete based on the provided ID
     if employee is None:
-        return jsonify({'error': 'Employee does not exist.'}), 404  # Return a JSON response with an error message and 404 status code if employee is not found
-
-    employees = [e for e in employees if e['id'] != id]  # Remove the employee from the list
-    return jsonify(employee), 200  # Return a JSON response containing the deleted employee data and 200 status code
+        # Return a JSON response with an error message and 404 status code if employee is not found
+        return jsonify({'error': 'Employee does not exist.'}), 404  
+    # Remove the employee from the list
+    employees = [e for e in employees if e['id'] != id]  
+    # Return a JSON response containing the deleted employee data and 200 status code
+    return jsonify(employee), 200  
 
 
 # Start the Flask application on port 5000 if the script is executed directly
